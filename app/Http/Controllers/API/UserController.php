@@ -29,6 +29,21 @@ class UserController extends Controller
 		]);
 	}
 
+	public function updateEmail(Request $request){
+		$userEmail = UserEmail::find($request->user_email_id);
+
+		$userEmail->email = $request->email;
+		$userEmail->organization_id = 1;
+
+		$userEmail->save();
+
+		return response()->json([
+			'success' => true,
+			'message' => 'Email updated successfully',
+			'data' => $userEmail;
+		]);
+	}
+
 	public function removeEmail(Request $request){
 		$userEmail = new UserEmail::find($request->user_email_id);
 		$userEmail->delete();
@@ -37,6 +52,38 @@ class UserController extends Controller
 	    'success' => true,
 	    'message' => 'Email removed successfully',
 	    'data' => $request->user_email_id;
+		]);
+	}
+
+	public function show(Request $request){
+	  return $request->user();
+	}
+
+	public function update(Request $request){
+		if($request->password == $request->confirmPassword){
+			$user = new User;
+			$user->name = $request->name;
+			$user->username = $request->username;
+	  	$user->address = $request->address;
+	  	$user->phone = $request->phone;
+
+			if($request->password != ""){
+				//Va a cambiar la contraseña
+				$user->password = bcrypt($request->password);
+			}
+
+			$user->save();
+
+			return response()->json([
+			    'success' => true,
+			    'message' => 'User updated successfully',
+			    'data' => $user;
+				]);
+		}
+		return response()->json([
+	    'success' => false,
+	    'message' => 'Password does not match',
+	    'data' => []
 		]);
 	}
 
