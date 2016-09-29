@@ -51,12 +51,12 @@ class UserController extends Controller
 		return response()->json([
 	    'success' => true,
 	    'message' => 'Email removed successfully',
-	    'data' => $request->user_email_id
+	    'data' => $request->user_email_id;
 		]);
 	}
 
 	public function show(Request $request){
-	  return User::where('username', $request->username)->first();
+	  return $request->user();
 	}
 
 	public function update(Request $request){
