@@ -56,7 +56,7 @@ class UserController extends Controller
 	}
 
 	public function show(Request $request){
-	  return $request->user();
+	  return User::where('username', $request->username)->first();
 	}
 
 	public function update(Request $request){
