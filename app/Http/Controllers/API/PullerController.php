@@ -35,7 +35,7 @@ class PullerController extends Controller {
   	return response()->json([
   		'success' => true,
   		'message' => 'Puller activated successfully',
-  		'data' => $user;
+  		'data' => $user
   	]);
   }
 
@@ -47,7 +47,7 @@ class PullerController extends Controller {
   	return response()->json([
   		'success' => true,
   		'message' => 'Puller deactivate successfully',
-  		'data' => $user;
+  		'data' => $user
   	]);
   }
 }

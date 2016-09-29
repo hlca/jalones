@@ -25,7 +25,7 @@ class UserController extends Controller
 		return response()->json([
 	    'success' => true,
 	    'message' => 'Email added successfully',
-	    'data' => $userEmail;
+	    'data' => $userEmail
 		]);
 	}
 
@@ -40,18 +40,18 @@ class UserController extends Controller
 		return response()->json([
 			'success' => true,
 			'message' => 'Email updated successfully',
-			'data' => $userEmail;
+			'data' => $userEmail
 		]);
 	}
 
 	public function removeEmail(Request $request){
-		$userEmail = new UserEmail::find($request->user_email_id);
+		$userEmail = UserEmail::find($request->user_email_id);
 		$userEmail->delete();
 
 		return response()->json([
 	    'success' => true,
 	    'message' => 'Email removed successfully',
-	    'data' => $request->user_email_id;
+	    'data' => $request->user_email_id
 		]);
 	}
 
@@ -77,7 +77,7 @@ class UserController extends Controller
 			return response()->json([
 			    'success' => true,
 			    'message' => 'User updated successfully',
-			    'data' => $user;
+			    'data' => $user
 				]);
 		}
 		return response()->json([
@@ -110,7 +110,7 @@ class UserController extends Controller
 		  	return response()->json([
 			    'success' => true,
 			    'message' => 'User saved successfully',
-			    'data' => $user;
+			    'data' => $user
 				]);
   		}
 
