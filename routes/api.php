@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
 
 	Route::post('/add/comentary', 'ComentaryController@addComentary');
 
+	Route::post('/routes/add', 'RouteController@newRoute');
+	Route::get('/routes', 'RouteController@index');
+
 	Route::post('/get/car', 'CarController@getCar');
 
 });
