@@ -7,11 +7,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\User;
 use App\UserEmail;
 
+use Hash;
+
 class UserController extends Controller
 {
+
+	public function authenticate(Request $request){
+		$user = User::where('username', $request->username)->first();
+		if($user != null){
+			if (Hash::check($request->password, $user->password)) {
+	    // The passwords match...
+			//if (Auth::attempt(['username' => $request->username, 'password' => ])) {
+	      return response()->json(['success' => true]);
+	    }	
+		}
+		
+    return response()->json(['success' => false]);
+	}
 	public function addEmail(Request $request){
 		$user = User::find($request->user_id);
 
@@ -51,7 +68,7 @@ class UserController extends Controller
 		return response()->json([
 	    'success' => true,
 	    'message' => 'Email removed successfully',
-	    'data' => $request->user_email_id;
+	    'data' => $request->user_email_id
 		]);
 	}
 
