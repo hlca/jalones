@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
 
 	Route::post('/get/car', 'CarController@getCar');
 
+	Route::get('/car/brands', 'CarBrandController@index');
+
 });
