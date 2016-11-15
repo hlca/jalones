@@ -76,6 +76,14 @@ class UserController extends Controller
 	  return $request->user();
 	}
 
+	public function get(Request $request){
+		return response()->json([
+	    'success' => false,
+	    'message' => 'Password does not match',
+	    'data' => User::where('id', $request->user_id)->first()
+		]);
+	}
+
 	public function update(Request $request){
 		if($request->password == $request->confirmPassword){
 			$user = new User;
