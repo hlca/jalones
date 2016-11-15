@@ -78,8 +78,8 @@ class UserController extends Controller
 
 	public function get(Request $request){
 		return response()->json([
-	    'success' => false,
-	    'message' => 'Password does not match',
+	    'success' => true,
+	    'message' => 'User retrieved successfully',
 	    'data' => User::where('id', $request->user_id)->first()
 		]);
 	}
