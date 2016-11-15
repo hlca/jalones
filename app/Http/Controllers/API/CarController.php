@@ -25,7 +25,7 @@ class CarController extends Controller
     $car->available_spots = 10;
     $car->user_id = $request->user_id;
     $car->save();
-    return respnse()->json(['data' => $car, 'success' => true]);
+    return response()->json(['data' => $car, 'success' => true]);
   }
   
 }
