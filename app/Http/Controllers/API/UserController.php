@@ -23,7 +23,7 @@ class UserController extends Controller
 			if (Hash::check($request->password, $user->password)) {
 	    // The passwords match...
 			//if (Auth::attempt(['username' => $request->username, 'password' => ])) {
-	      return response()->json(['success' => true]);
+	      return response()->json(['success' => true, 'data' => ['user_id' => $user->id]]);
 	    }	
 		}
 		
